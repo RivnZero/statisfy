@@ -1,0 +1,5 @@
+{"event":"launched","properties":{"main_model":"gemini/gemini-2.5-pro","weak_model":"gemini/gemini-2.5-flash-lite"},"user_id":"11111111-2222-3333-4444-555555555555","time":1755000000}
+{"event":"message_send","properties":{"main_model":"gemini/gemini-2.5-pro","weak_model":"gemini/gemini-2.5-flash-lite","edit_format":"ask","prompt_tokens":10006,"completion_tokens":81,"total_tokens":10087,"cost":0.0133175,"total_cost":0.0133175},"user_id":"11111111-2222-3333-4444-555555555555","time":1755100327}
+{"event":"message_send","properties":{"main_model":"anthropic/claude-sonnet-4","prompt_tokens":5120,"completion_tokens":240,"total_tokens":5360,"cost":0.0500000},"user_id":"11111111-2222-3333-4444-555555555555","time":1755100400}
+{this line is deliberately corrupt and must be skipped}
+{"event":"cli session","properties":{"main_model":"gemini/gemini-2.5-pro","edit_format":"diff-fenced"},"user_id":"11111111-2222-3333-4444-555555555555","time":1755100600}

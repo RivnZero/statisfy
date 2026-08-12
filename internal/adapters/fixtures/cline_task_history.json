@@ -1,0 +1,35 @@
+[
+  {
+    "id": "abc-111",
+    "ts": 1753916400000,
+    "task": "Refactor the checkout flow to use the new payment API and add tests.",
+    "tokensIn": 12450,
+    "tokensOut": 420,
+    "totalCost": 0.0133902,
+    "isFavorited": false,
+    "api": {
+      "apiKey": "sk-ant-fake-credential-never-printed",
+      "provider": "anthropic"
+    }
+  },
+  {
+    "id": "abc-222",
+    "ts": 1754002800000,
+    "task": "Investigate the flaky integration test suite.",
+    "tokensIn": 8341,
+    "tokensOut": 1510,
+    "totalCost": 0.0214719,
+    "isFavorited": true
+  },
+  {
+    "id": "abc-333",
+    "ts": 1754089200000,
+    "task": "Write release notes for v2.3.",
+    "tokensIn": 2103,
+    "tokensOut": 342,
+    "totalCost": 0.0041097,
+    "isFavorited": false,
+    "apiModelId": "claude-sonnet-4",
+    "apiProvider": "anthropic"
+  }
+]

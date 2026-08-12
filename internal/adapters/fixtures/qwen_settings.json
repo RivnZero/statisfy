@@ -1,0 +1,7 @@
+{
+  "authType": "qwen-oauth",
+  "provider": "qwen",
+  "model": "qwen3-coder-plus",
+  "modelId": "qwen3-coder-plus",
+  "apiKey": ""
+}

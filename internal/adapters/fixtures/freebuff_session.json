@@ -1,0 +1,59 @@
+{
+  "status": "none",
+  "accessTier": "limited",
+  "standing": {
+    "level": "new",
+    "label": "Getting started",
+    "blurb": "Welcome! Your account is brand new, so limits start small.",
+    "score": 20,
+    "nextLevel": "verified",
+    "nextLevelAt": 25,
+    "factors": [],
+    "accessTier": "limited",
+    "limits": {
+      "userMessagesPerDay": 40,
+      "messagesPer5Hours": 400,
+      "messagesPerDay": 500,
+      "dailySpendUsd": 3,
+      "premiumSessionsPerDay": 0
+    }
+  },
+  "rateLimitsByModel": {
+    "deepseek/deepseek-v4-flash": {
+      "model": "deepseek/deepseek-v4-flash",
+      "entitlementBreakdown": {
+        "base": 6,
+        "referral": 0,
+        "streak": 0
+      },
+      "limit": 6,
+      "period": "pacific_day",
+      "resetTimeZone": "America/Los_Angeles",
+      "resetAt": "2026-08-13T07:00:00.000Z",
+      "windowHours": 24,
+      "recentCount": 0.7
+    },
+    "mimo/mimo-v2.5": {
+      "model": "mimo/mimo-v2.5",
+      "entitlementBreakdown": {
+        "base": 6,
+        "referral": 0,
+        "streak": 0
+      },
+      "limit": 6,
+      "period": "pacific_day",
+      "resetTimeZone": "America/Los_Angeles",
+      "resetAt": "2026-08-13T07:00:00.000Z",
+      "windowHours": 24,
+      "recentCount": 0.7
+    }
+  },
+  "message": "Call POST to start a free session.",
+  "glmPromo": {
+    "dailySessions": 6,
+    "endsAt": "2026-08-18T01:12:40.000Z"
+  },
+  "countryCode": "US",
+  "countryBlockReason": null,
+  "ipPrivacySignals": null
+}

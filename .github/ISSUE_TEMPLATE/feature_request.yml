@@ -1,0 +1,26 @@
+name: Feature request
+description: Suggest a feature or a new integration
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: A short description of the workflow this would improve.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What should statisfy do differently?
+  - type: markdown
+    attributes:
+      value: |
+        **Before requesting a new integration**, have a look at the
+        [support matrix](https://github.com/RivnZero/statisfy#support-matrix)
+        and the adapter contract in
+        [CONTRIBUTING.md](https://github.com/RivnZero/statisfy/blob/main/CONTRIBUTING.md).
+        Statisfy only adds integrations with a real, detectable data source —
+        no invented quotas, no unavailable tools on the default dashboard.

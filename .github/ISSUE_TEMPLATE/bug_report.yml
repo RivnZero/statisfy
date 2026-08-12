@@ -1,0 +1,46 @@
+name: Bug report
+description: Something is broken or misleading
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. If you can, run `statisfy doctor` and paste the relevant lines below — it explains *why* statisfy sees a tool the way it does.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you run, and what did you see?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to see?
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: statisfy doctor output
+      description: Run `statisfy doctor` and paste the output. Redact anything that looks like a credential.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `statisfy version`
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Linux
+        - Windows
+  - type: textarea
+    id: tools
+    attributes:
+      label: Affected tools
+      description: Which integration(s)? codex, claude, opencode, freebuff, gemini, copilot, qwen, openrouter, cline, aider, droid

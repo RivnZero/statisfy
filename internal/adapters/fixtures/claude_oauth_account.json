@@ -1,0 +1,17 @@
+{
+  "oauthAccount": {
+    "accountUuid": "00000000-0000-0000-0000-000000000000",
+    "emailAddress": "user@example.com",
+    "organizationUuid": "00000000-0000-0000-0000-000000000001",
+    "hasExtraUsageEnabled": false,
+    "billingType": "stripe_subscription",
+    "accountCreatedAt": "2026-06-16T10:50:33.134476Z",
+    "subscriptionCreatedAt": "2026-07-26T09:41:29.017361Z",
+    "seatTier": null,
+    "displayName": "example-user",
+    "organizationType": "claude_pro",
+    "organizationRateLimitTier": "default_claude_ai",
+    "userRateLimitTier": null,
+    "organizationName": "Example Org"
+  }
+}

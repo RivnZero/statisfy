@@ -1,0 +1,21 @@
+{
+  "data": {
+    "label": "sk-or-v1-...redacted...",
+    "usage": 38.2,
+    "usage_daily": 1.24,
+    "usage_weekly": 12.87,
+    "usage_monthly": 25.1,
+    "limit": 100,
+    "limit_remaining": 74.8,
+    "limit_reset": "monthly",
+    "is_free_tier": false,
+    "is_management_key": false,
+    "is_provisioning_key": false,
+    "expires_at": null,
+    "rate_limit": {
+      "interval": "1s",
+      "requests": 1000,
+      "note": "This field is deprecated and safe to ignore."
+    }
+  }
+}
