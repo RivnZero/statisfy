@@ -94,6 +94,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      # Required so the notes-file below exists in the workspace.
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
