@@ -1,0 +1,17 @@
+{
+  "rateLimits": {
+    "limitId": "codex_pro_5x",
+    "planType": "pro",
+    "multiplier": 5,
+    "primary": {
+      "usedPercent": 20,
+      "windowDurationMins": 300,
+      "resetsAt": 1787040374
+    },
+    "credits": {
+      "hasCredits": false,
+      "unlimited": false,
+      "balance": "0"
+    }
+  }
+}

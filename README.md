@@ -17,7 +17,8 @@ Codex       Plus
 Weekly        ██████████  96% left  ·  reset 5d 14h
 
 Claude      Pro
-
+Today       1.2M tokens
+Sessions    5
 OpenCode
 Today         294.8K tokens
 Cost          $0.00
@@ -68,8 +69,8 @@ go install statisfy/cmd/statisfy@latest   # or: go build ./cmd/statisfy
 
 | Tool | Detection | Data shown | Source | Stability |
 |---|---|---|---|---|
-| Codex | `codex` on PATH + `~/.codex/auth.json` | Plan, rate-limit windows (5h/weekly/daily), percent used, reset time | `codex app-server` (official API) | internal |
-| Claude | `claude` on PATH + `oauthAccount` in `~/.claude.json` | Plan (Free/Pro/Max/Business/Enterprise), account, usage windows when a credentials file is present | local state + official API | local |
+| Codex | `codex` on PATH + `~/.codex/auth.json` | Plan, rate-limit windows (5h/weekly/daily), percent used, reset time, multiplier when the API explicitly reports one (Pro only) | `codex app-server` (official API) | internal |
+| Claude | `claude` on PATH or `~/.claude` state | Plan (Free/Pro/Max/Business/Enterprise), account, today's tokens/sessions/models from local transcripts, usage windows when a credentials file is present | local state (account + transcripts) + official API | local |
 | Gemini CLI | `gemini` on PATH + active account in `~/.gemini/google_accounts.json` | Active account/plan when the local account state exposes it | local state | local |
 | Copilot CLI | `copilot` on PATH + `~/.copilot/data.db` | Session/token usage (nano-AIU) from the local SQLite store | local SQLite | local |
 | Qwen Code | `qwen` on PATH + `~/.qwen/settings.json` | Provider/Model relationship from settings | local state | local |
@@ -87,7 +88,7 @@ Only capabilities actually implemented and fixture-tested are marked.
 | Tool | Plan | Tier/Multiplier | Usage | Reset | Sessions | Tokens | Cost | Provider/Model | Source stability |
 |---|---|---|---|---|---|---|---|---|---|
 | Codex | ✓ | – | ✓ | ✓ | – | – | – | – | internal |
-| Claude | ✓ | – | ✓ | ✓ | – | – | – | – | local |
+| Claude | ✓ | – | ✓ | ✓ | ✓ | ✓ | – | ✓ | local |
 | Gemini CLI | ✓* | – | – | – | – | – | – | – | local |
 | Copilot CLI | ✓* | – | ✓ | – | – | ✓ | – | – | local |
 | Qwen Code | – | – | – | – | – | – | – | ✓ | local |
@@ -102,11 +103,9 @@ Only capabilities actually implemented and fixture-tested are marked.
 
 ### What is never shown
 
-- **Multipliers (5x/20x)** — the Codex API does not currently report one, so
-  statisfy never invents it.
-- **Claude usage on Windows** — the OAuth token lives in the OS credential
-  vault (not a readable file), so usage windows are omitted there. Plan is
-  still shown from local state.
+- **Codex multipliers** — 5x and 20x are Pro tier variants. statisfy shows
+  one only when the Codex API explicitly reports it on a Pro plan, and never
+  attaches one to Plus or any other plan.
 - Credentials, tokens, or authorization headers in any output.
 
 ## Security model
@@ -238,6 +237,12 @@ fixtures/tests. The core and renderers never change.
 - **Cline** and **Aider** read internal/local formats (`taskHistory.json`, the
   analytics log) that can shift across tool versions; statisfy then degrades
   gracefully (missing/unparseable state → tool unavailable → hidden).
+- **Claude** transcripts under `~/.claude/projects` are an internal,
+  undocumented format; if the schema shifts, statisfy stops seeing usage
+  rather than showing wrong numbers. Official usage windows are only shown
+  when an OAuth token file exists on disk — on Windows that token lives in
+  the OS credential vault, so windows are omitted there, but the transcript
+  metrics work on every platform.
 - **Aider** records no usage by default — only with `aider --analytics-log
   ~/.aider/analytics.jsonl` does it persist the JSONL log statisfy reads.
 - **Droid** usage/credits live behind the semi-documented `api.factory.ai`

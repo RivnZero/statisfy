@@ -52,6 +52,12 @@ func Sources(w io.Writer, results []core.ToolResult, opts Options) {
 		if st.Tier != "" {
 			fmt.Fprintf(w, "  %-12s %-18s %s\n", "Tier", SourceLabel(st.Source), stabilityTag(st.Stability))
 		}
+		if st.Provider != "" {
+			fmt.Fprintf(w, "  %-12s %-18s %s\n", "Provider", SourceLabel(st.Source), stabilityTag(st.Stability))
+		}
+		if st.Model != "" {
+			fmt.Fprintf(w, "  %-12s %-18s %s\n", "Model", SourceLabel(st.Source), stabilityTag(st.Stability))
+		}
 		for _, l := range st.Limits {
 			src := l.Source
 			if src == "" {

@@ -43,11 +43,12 @@ func (a CodexAdapter) Detect(ctx context.Context) core.Detection {
 // rateLimitsResponse mirrors the verified `account/rateLimits/read` payload.
 type rateLimitsResponse struct {
 	RateLimits struct {
-		LimitID   string     `json:"limitId"`
-		PlanType  string     `json:"planType"`
-		Primary   *rlWindow  `json:"primary"`
-		Secondary *rlWindow  `json:"secondary"`
-		Credits   *rlCredits `json:"credits"`
+		LimitID    string     `json:"limitId"`
+		PlanType   string     `json:"planType"`
+		Multiplier *int       `json:"multiplier,omitempty"` // explicit entitlement multiplier, when the API reports it
+		Primary    *rlWindow  `json:"primary"`
+		Secondary  *rlWindow  `json:"secondary"`
+		Credits    *rlCredits `json:"credits"`
 	} `json:"rateLimits"`
 	RateLimitResetCredits struct {
 		AvailableCount int `json:"availableCount"`
@@ -121,6 +122,13 @@ func parseRateLimits(raw json.RawMessage) (*core.Status, error) {
 		Source:    core.SourceOfficialAPI,
 		Stability: core.StabilityInternal,
 		Plan:      normalizePlan(pl.RateLimits.PlanType),
+	}
+	// 5x/20x are Pro tier variants — they must never appear next to Plus (or
+	// any other plan). A multiplier is only honored when the upstream payload
+	// explicitly reports one AND the plan is Pro; it is never inferred from
+	// the plan name alone.
+	if pl.RateLimits.Multiplier != nil && st.Plan == "Pro" && *pl.RateLimits.Multiplier > 0 {
+		st.Multiplier = *pl.RateLimits.Multiplier
 	}
 	addWindow(st, pl.RateLimits.Primary)
 	addWindow(st, pl.RateLimits.Secondary)

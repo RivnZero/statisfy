@@ -102,8 +102,17 @@ jobs:
           merge-multiple: true
       - name: Checksums
         run: cd artifacts && sha256sum * > checksums.txt
+      # Build a versioned title in front of the static release-notes body so
+      # every release (v0.0.1, v0.0.2, ...) gets its own header automatically.
+      - name: Prepare release notes
+        run: |
+          {
+            echo "# Statisfy ${GITHUB_REF_NAME}"
+            echo
+            cat .github/release-notes.md
+          } > notes.md
       - name: Publish
         uses: softprops/action-gh-release@v2
         with:
           files: artifacts/*
-          notes-file: .github/release-notes.md
+          notes-file: notes.md

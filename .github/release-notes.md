@@ -1,47 +1,17 @@
-## What's in v0.0.1
+### Changed
 
-The first public release of Statisfy.
+- Claude can now read usage straight from Claude Code's local transcripts
+  (`~/.claude/projects/**/*.jsonl`): today's tokens, sessions, and the model
+  used — no account token required, and it works on Windows too.
+- Claude plan and local usage are collected independently, so partial data
+  (plan only, or usage only) is shown instead of hiding the whole tool.
+- Corrected Codex tier handling: 5x and 20x are Pro variants. They are only
+  shown when the Codex API explicitly reports them on a Pro plan, and they can
+  never appear next to Plus.
+- Removed the outdated "no Claude usage on Windows" limitation from the README
+  and refreshed the support/source matrix.
+- Added sanitized fixture coverage for Claude transcripts and Codex
+  plan/tier combinations.
 
-Statisfy gives you one place to check how much usage you have left across the
-AI coding tools already configured on your machine — quotas, sessions, tokens,
-costs, and reset windows, in one command.
-
-Statisfy only shows data it can actually detect. If a tool isn't installed or
-configured, it stays out of the way. Missing metrics are omitted, never
-invented.
-
-### Supported integrations
-
-- Codex
-- Claude
-- OpenCode
-- Freebuff
-- Gemini CLI
-- GitHub Copilot CLI
-- Qwen Code
-- OpenRouter (provider)
-- Cline
-- Aider
-- Factory Droid
-
-### Also included
-
-- `--json` machine-readable output
-- Per-adapter caching with `--refresh` to bypass
-- `statisfy watch` live dashboard
-- `statisfy sources` provenance reporting
-- `statisfy doctor` diagnostics
-- Optional TOML configuration
-- Cross-platform builds (macOS, Linux, Windows)
-
-Some integrations depend on internal or community-observed interfaces
-(Codex, Freebuff, Cline, Aider). Those may need adjustments as upstream tools
-change — Statisfy degrades gracefully rather than guessing.
-
-## Installing
-
-```bash
-go install github.com/RivnZero/statisfy/cmd/statisfy@latest
-```
-
-Or grab a binary for your platform from the release assets below.
+The test suite runs entirely on fixtures and temp directories — no live
+account queries are involved.
