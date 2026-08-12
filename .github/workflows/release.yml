@@ -115,4 +115,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: artifacts/*
-          notes-file: notes.md
+          # softprops uses `body_path`, not `notes-file` (which it ignores).
+          body_path: notes.md
